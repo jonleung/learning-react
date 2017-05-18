@@ -1,7 +1,7 @@
 // src/people.js
 const people = [{
   manager: 'Jen',
-  name: 'Bob'
+  name: 'Bob is awesome and I want'
 }, {
   manager: 'Jen',
   name: 'Sue'
