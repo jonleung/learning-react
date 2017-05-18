@@ -13,11 +13,9 @@ img.style.padding = "20px"
 img.width = 32
 document.body.appendChild(img)
 
-
+import './style.scss'
 import {groupBy} from 'lodash/collection'
 import people from './people'
-
-import './style.scss'
 
 const managerGroups = groupBy(people, 'manager')
 
