@@ -1,32 +1,12 @@
-// const root = document.querySelector('#root')
-// root.innerHTML = `<p>Hello webpack.</p>`
-
-// does this recompile?
-
-// src/app.js
-
 if (module.hot) {
   module.hot.accept()
 }
 
 import './style.scss'
 import {groupBy} from 'lodash/collection'
-import people from './people'
 
-const managerGroups = groupBy(people, 'manager')
+import Todo from './todo'
+import TodoList from './todo_list'
 
-const root = document.querySelector('#root')
-root.innerHTML = `<pre>${JSON.stringify(managerGroups, null, 2)}</pre>`
-
-const routes = {
-  dashboard: () => {
-    System.import('./dashboard').then((dashboard) => {
-      dashboard.draw()
-    }).catch((err) => {
-      console.log("Chunk loading failed")
-    })
-  }
-}
-
-// demo async loading with a timeout
-setTimeout(routes.dashboard, 1000)
+let x = new Todo("Hello World")
+console.log(x.title)
