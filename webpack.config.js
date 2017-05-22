@@ -9,8 +9,8 @@ const extractCommons = new webpack.optimize.CommonsChunkPlugin({
 const config = {
   context: path.resolve(__dirname, 'src'),
   entry: {
-    app: './app.js',
-    admin: './admin.js'
+    tictactoe: './tictactoe/app.js',
+    todo: './todo/app.js'
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
