@@ -12,8 +12,8 @@ function TodoForm(props) {
         type = "text"
         onKeyPress = {
           (e) => {
-            if(e.key == 'Enter') {
-              alert("Enter Pressed")
+            if(e.key === 'Enter') {
+              alert(e.target.value)
             }
           }
         }
