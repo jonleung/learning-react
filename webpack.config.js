@@ -10,7 +10,7 @@ const config = {
   context: path.resolve(__dirname, 'src'),
   entry: {
     tictactoe: './tictactoe/app.js',
-    todo: './todo/app.js'
+    todo: './todo/app.jsx'
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
