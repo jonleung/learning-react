@@ -31,7 +31,11 @@ const config = {
          loader: ['style-loader', 'css-loader','sass-loader']
       },
       {
-        test: /\.js$/,
+        test: /\.css$/,
+         loader: ['style-loader', 'css-loader']
+      },
+      {
+        test: /\.js[x]?$/,
         include: path.resolve(__dirname, 'src'),
         use: [{
           loader: 'babel-loader',
