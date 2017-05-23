@@ -5,34 +5,52 @@ if (module.hot) {
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-function TodoForm(props) {
-  return(
-    <div>
-      <input
-        type = "text"
-        onKeyPress = {
-          (e) => {
-            if(e.key === 'Enter') {
-              alert(e.target.value)
-            }
-          }
-        }
-      />
-    </div>
-  );
-}
-
-class App extends React.Component {
+class TodoApp extends React.Component { 
   render() {
     return (
-      <TodoForm/>
-    );
+      <h1>Hello World</h1>
+    )
   }
 }
 
-// ========================================
+class ControlBar extends React.Component { 
+
+}
+
+class TodoList extends React.Component { 
+
+}
+
+class Todo extends React.Component { 
+
+}
+
+const TODOS = {
+  todos: [
+    {
+      title: "Task 1",
+      isDone: true,
+    },
+    {
+      title: "Task 2",
+      isDone: true,
+    },
+    {
+      title: "Task 3",
+      isDone: false,
+    },
+    {
+      title: "Task 4",
+      isDone: false,
+    },
+    {
+      title: "Task 5",
+      isDone: false,
+    },
+  ]
+}
 
 ReactDOM.render(
-  <App />,
+  <TodoApp products={TODOS} />,
   document.getElementById('root')
 );
