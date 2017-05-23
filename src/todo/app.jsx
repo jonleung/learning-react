@@ -5,12 +5,19 @@ if (module.hot) {
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-class TodoApp extends React.Component { 
+class TodoApp extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      todos: props.data.todos.slice(),
+    }
+  }
+
   render() {
     return (
       <div>
         <ControlBar></ControlBar>
-        <TodoList todos={this.props.data.todos}></TodoList>
+        <TodoList todos={this.state.todos}></TodoList>
       </div>
     )
   }
@@ -52,7 +59,7 @@ class Todo extends React.Component {
   render() {
     return (
       <li>
-        <input type="checkbox" defaultChecked={this.props.isDone}/>
+        <input type="checkbox" checked={this.props.isDone}/>
         <span>{this.props.title}</span>
       </li>
     )
