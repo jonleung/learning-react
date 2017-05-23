@@ -11,6 +11,24 @@ class TodoApp extends React.Component {
     this.state = {
       todos: props.data.todos.slice(),
     }
+    this.handleTodoTitleChange = this.handleTodoTitleChange.bind(this);
+    this.handleTodoIsDoneChange = this.handleTodoIsDoneChange.bind(this);
+  }
+
+  handleTodoTitleChange(index, title) {
+    let todos = this.state.todos.slice();
+    todos[index].title = title;
+    this.setState({
+      todos: todos
+    })
+  }
+
+  handleTodoIsDoneChange(index, isDone) {
+    let todos = this.state.todos.slice();
+    todos[index].isDone = isDone;
+    this.setState({
+      todos: todos
+    })
   }
 
   render() {
@@ -18,7 +36,10 @@ class TodoApp extends React.Component {
       <div>
         <ControlBar></ControlBar>
         <TodoList 
-          todos={this.state.todos}>
+          todos={this.state.todos}
+          onTodoTitleChange={this.handleTodoTitleChange}
+          onTodoIsDoneChange={this.handleTodoIsDoneChange}
+        >
         </TodoList>
       </div>
     )
@@ -41,11 +62,34 @@ class ControlBar extends React.Component {
   }
 }
 
-class TodoList extends React.Component { 
+class TodoList extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleTodoTitleChange = this.handleTodoTitleChange.bind(this);
+    this.handleTodoIsDoneChange = this.handleTodoIsDoneChange.bind(this);
+  }
+
+  handleTodoTitleChange(index, title) {
+    this.props.onTodoTitleChange(parseInt(index), title);
+  }
+
+  handleTodoIsDoneChange(index, isDone) {
+    this.props.onTodoIsDoneChange(parseInt(index), isDone);
+  }
+
   render() {
-    let todoComponents = this.props.todos.map((todo) => {
-      return <Todo key={todo.id} isDone={todo.isDone} title={todo.title}/>
-    })
+    let todoComponents = this.props.todos.map((todo, i) => {
+      return (
+        <Todo
+          key={i}
+          index={i}
+          isDone={todo.isDone}
+          title={todo.title}
+          onTodoTitleChange={this.handleTodoTitleChange}
+          onTodoIsDoneChange={this.handleTodoIsDoneChange}
+        />
+      )
+    }) 
 
     return (
       <div>
@@ -57,12 +101,34 @@ class TodoList extends React.Component {
   }
 }
 
-class Todo extends React.Component { 
+class Todo extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleTodoTitleChange = this.handleTodoTitleChange.bind(this);
+    this.handleTodoIsDoneChange = this.handleTodoIsDoneChange.bind(this);
+  }
+
+  handleTodoTitleChange(e) {
+    this.props.onTodoTitleChange(this.props.index, e.target.value);
+  }
+
+  handleTodoIsDoneChange(e) {
+    this.props.onTodoIsDoneChange(this.props.index, e.target.checked)
+  }
+
   render() {
     return (
       <li>
-        <input type="checkbox" checked={this.props.isDone}/>
-        <input type="text" value={this.props.title}/>
+        <input
+          type="checkbox"
+          checked={this.props.isDone}
+          onChange={this.handleTodoIsDoneChange}
+        />
+        <input 
+          type="text" 
+          value={this.props.title}
+          onChange={this.handleTodoTitleChange}
+        />
       </li>
     )
   }
