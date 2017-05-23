@@ -17,7 +17,9 @@ class TodoApp extends React.Component {
     return (
       <div>
         <ControlBar></ControlBar>
-        <TodoList todos={this.state.todos}></TodoList>
+        <TodoList 
+          todos={this.state.todos}>
+        </TodoList>
       </div>
     )
   }
@@ -60,7 +62,7 @@ class Todo extends React.Component {
     return (
       <li>
         <input type="checkbox" checked={this.props.isDone}/>
-        <span>{this.props.title}</span>
+        <input type="text" value={this.props.title}/>
       </li>
     )
   }
