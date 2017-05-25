@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-const uuidV4 = require('uuid/v4');
-
 import TodoApp from './components/TodoApp';
+
+const uuidV4 = require('uuid/v4');
 
 if (module.hot) {
   module.hot.accept();

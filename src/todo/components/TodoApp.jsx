@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { filter } from 'lodash/collection';
-const uuidV4 = require('uuid/v4');
 
 import ControlBar from './ControlBar';
 import TodoList from './TodoList';
 import Footer from './Footer';
+
+const uuidV4 = require('uuid/v4');
 
 class TodoApp extends React.Component {
   constructor(props) {
