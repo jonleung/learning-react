@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { filter } from 'lodash/collection';
 
 import Todo from './Todo';
+
 
 class TodoList extends React.Component {
   constructor(props) {
@@ -19,7 +21,24 @@ class TodoList extends React.Component {
   }
 
   render() {
-    const todoComponents = this.props.todos.map((todo, i) =>
+    // filter(this.state.todos, todo => todo.isDone)
+    const filteredTodos = filter(this.props.todos, (todo) => {
+      switch (this.props.filterView) {
+        case 'all' : {
+          return true;
+        }
+        case 'complete' : {
+          return todo.isDone === true;
+        }
+        case 'incomplete' : {
+          return todo.isDone === false;
+        }
+        default: {
+          throw ({ error: 'The programmer fucked up. Invalid filterView set. You fucked up. Use an Enum plz.' });
+        }
+      }
+    });
+    const todoComponents = filteredTodos.map((todo, i) =>
       (<Todo
         key={todo.id}
         index={i}

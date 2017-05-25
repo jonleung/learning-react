@@ -74,6 +74,7 @@ class TodoApp extends React.Component {
         />
         <TodoList
           todos={this.state.todos}
+          filterView={this.state.filterView}
           onTodoTitleChange={this.handleTodoTitleChange}
           onTodoIsDoneChange={this.handleTodoIsDoneChange}
         />
