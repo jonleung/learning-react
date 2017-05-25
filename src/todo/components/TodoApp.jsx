@@ -3,6 +3,9 @@ import PropTypes from 'prop-types';
 
 import ControlBar from './ControlBar';
 import TodoList from './TodoList';
+import Footer from './Footer';
+
+import { filter } from 'lodash/collection';
 
 class TodoApp extends React.Component {
   constructor(props) {
@@ -30,6 +33,15 @@ class TodoApp extends React.Component {
     });
   }
 
+  calcNumDoneTodos() {
+    return filter(this.state.todos, todo => todo.isDone).length;
+  }
+
+  calcNumTotalTodos() {
+    return this.state.todos.length;
+  }
+
+
   render() {
     return (
       <div>
@@ -38,6 +50,10 @@ class TodoApp extends React.Component {
           todos={this.state.todos}
           onTodoTitleChange={this.handleTodoTitleChange}
           onTodoIsDoneChange={this.handleTodoIsDoneChange}
+        />
+        <Footer
+          numDoneTodos={this.calcNumDoneTodos()}
+          numTotalTodos={this.calcNumTotalTodos()}
         />
       </div>
     );
