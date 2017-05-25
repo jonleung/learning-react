@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+const uuidV4 = require('uuid/v4');
 
 import TodoApp from './components/TodoApp';
 
@@ -10,27 +11,27 @@ if (module.hot) {
 const STORE = {
   todos: [
     {
-      id: 1,
+      id: uuidV4(),
       title: 'Task 1',
       isDone: true,
     },
     {
-      id: 2,
+      id: uuidV4(),
       title: 'Task 2',
       isDone: true,
     },
     {
-      id: 3,
+      id: uuidV4(),
       title: 'Task 3',
       isDone: false,
     },
     {
-      id: 4,
+      id: uuidV4(),
       title: 'Task 4',
       isDone: false,
     },
     {
-      id: 5,
+      id: uuidV4(),
       title: 'Task 5',
       isDone: false,
     },

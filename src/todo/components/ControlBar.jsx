@@ -1,10 +1,20 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class ControlBar extends React.Component {
+  constructor(props) {
+    super(props);
+    this.addTodo = this.addTodo.bind(this);
+  }
+
+  addTodo() {
+    this.props.onTodoAdded();
+  }
+
   render() {
     return (
       <div>
-        <button>Add</button>
+        <button onClick={this.addTodo}>Add</button>
         <span>Show </span>
         <select>
           <option value="show-completed">All Todos</option>
@@ -15,5 +25,13 @@ class ControlBar extends React.Component {
     );
   }
 }
+
+ControlBar.propTypes = {
+  onClick: PropTypes.func,
+};
+
+ControlBar.defaultProps = {
+  onClick: this.addTodo,
+};
 
 export default ControlBar;

@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { filter } from 'lodash/collection';
+const uuidV4 = require('uuid/v4');
 
 import ControlBar from './ControlBar';
 import TodoList from './TodoList';
 import Footer from './Footer';
-
-import { filter } from 'lodash/collection';
 
 class TodoApp extends React.Component {
   constructor(props) {
@@ -15,6 +15,7 @@ class TodoApp extends React.Component {
     };
     this.handleTodoTitleChange = this.handleTodoTitleChange.bind(this);
     this.handleTodoIsDoneChange = this.handleTodoIsDoneChange.bind(this);
+    this.handleBlankTodoAdded = this.handleBlankTodoAdded.bind(this);
   }
 
   handleTodoTitleChange(index, title) {
@@ -33,6 +34,19 @@ class TodoApp extends React.Component {
     });
   }
 
+  handleBlankTodoAdded() {
+    const todos = this.state.todos.slice();
+    const todo = {
+      id: uuidV4(),
+      title: '',
+      isDone: false,
+    };
+    todos.unshift(todo);
+    this.setState({
+      todos,
+    });
+  }
+
   calcNumDoneTodos() {
     return filter(this.state.todos, todo => todo.isDone).length;
   }
@@ -41,11 +55,12 @@ class TodoApp extends React.Component {
     return this.state.todos.length;
   }
 
-
   render() {
     return (
       <div>
-        <ControlBar />
+        <ControlBar
+          onTodoAdded={this.handleBlankTodoAdded}
+        />
         <TodoList
           todos={this.state.todos}
           onTodoTitleChange={this.handleTodoTitleChange}

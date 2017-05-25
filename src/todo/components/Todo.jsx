@@ -8,6 +8,10 @@ class Todo extends React.Component {
     this.handleTodoIsDoneChange = this.handleTodoIsDoneChange.bind(this);
   }
 
+  componentDidMount() {
+    this.textInput.focus();
+  }
+
   handleTodoTitleChange(e) {
     this.props.onTodoTitleChange(this.props.index, e.target.value);
   }
@@ -25,6 +29,7 @@ class Todo extends React.Component {
           onChange={this.handleTodoIsDoneChange}
         />
         <input
+          ref={(input) => { this.textInput = input; }}
           type="text"
           value={this.props.title}
           onChange={this.handleTodoTitleChange}
