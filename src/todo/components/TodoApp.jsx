@@ -12,11 +12,13 @@ class TodoApp extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      filterView: 'all',
       todos: props.store.todos.slice(),
     };
     this.handleTodoTitleChange = this.handleTodoTitleChange.bind(this);
     this.handleTodoIsDoneChange = this.handleTodoIsDoneChange.bind(this);
     this.handleBlankTodoAdded = this.handleBlankTodoAdded.bind(this);
+    this.handleFilterViewChange = this.handleFilterViewChange.bind(this);
   }
 
   handleTodoTitleChange(index, title) {
@@ -48,6 +50,12 @@ class TodoApp extends React.Component {
     });
   }
 
+  handleFilterViewChange(filterView) {
+    this.setState({
+      filterView,
+    });
+  }
+
   calcNumDoneTodos() {
     return filter(this.state.todos, todo => todo.isDone).length;
   }
@@ -61,6 +69,8 @@ class TodoApp extends React.Component {
       <div>
         <ControlBar
           onTodoAdded={this.handleBlankTodoAdded}
+          filterView={this.state.filterView}
+          onFilterViewChange={this.handleFilterViewChange}
         />
         <TodoList
           todos={this.state.todos}
@@ -77,11 +87,12 @@ class TodoApp extends React.Component {
 }
 
 TodoApp.propTypes = {
-  store: PropTypes.objectOf(PropTypes.array),
+  store: PropTypes.object,
 };
 
 TodoApp.defaultProps = {
   store: {
+    filterView: 'all',
     todos: [],
   },
 };

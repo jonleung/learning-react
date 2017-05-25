@@ -9,6 +9,7 @@ if (module.hot) {
 }
 
 const STORE = {
+  filterView: 'all',
   todos: [
     {
       id: uuidV4(),
