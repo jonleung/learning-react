@@ -1,6 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import JobForm from './JobForm';
+import Jobs from './Jobs';
+import Job from './Job';
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -9,7 +13,9 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <h1>Hai Daria! 🐰</h1>
+        <h1>Jobs Board</h1>
+        <JobForm />
+        <Jobs />
       </div>
     );
   }
