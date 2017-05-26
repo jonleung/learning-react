@@ -22,13 +22,15 @@ class Todo extends React.Component {
 
   render() {
     return (
-      <li>
+      <li className="todo-row">
         <input
+          className="checkbox"
           type="checkbox"
           checked={this.props.isDone}
           onChange={this.handleTodoIsDoneChange}
         />
         <input
+          className="title"
           ref={(input) => { this.textInput = input; }}
           type="text"
           value={this.props.title}

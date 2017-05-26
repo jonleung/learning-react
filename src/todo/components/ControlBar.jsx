@@ -19,16 +19,18 @@ class ControlBar extends React.Component {
   render() {
     return (
       <div>
-        <button onClick={this.addTodo}>Add</button>
-        <span>Show </span>
-        <select
-          value={this.props.filterView}
-          onChange={this.handleFilterViewChange}
-        >
-          <option value="all">All Todos</option>
-          <option value="incomplete">Incomplete Only</option>
-          <option value="complete">Complete Only</option>
-        </select>
+        <button onClick={this.addTodo}>Add</button>  
+        <div className="view-selector">
+          <span>View: </span>
+          <select
+            value={this.props.filterView}
+            onChange={this.handleFilterViewChange}
+          >
+            <option value="all">All Todos</option>
+            <option value="incomplete">Incomplete Only</option>
+            <option value="complete">Complete Only</option>
+          </select>
+        </div>
       </div>
     );
   }

@@ -1,0 +1,32 @@
+body, button, input, select, option {
+  font-family: "Georgia";
+  color: $body-text-color;
+  font-size: 1em;
+}
+
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 300px;
+
+  padding-top: 4vh;
+}
+
+.view-selector {
+  float: right;
+}
+
+.todo-row {
+  border-top: 1px solid $todo-divider-color;
+  border-bottom: 1px solid $todo-divider-color;
+  padding-top: 8px;
+  padding-bottom: 8px;
+
+  .title {
+    padding-left: 10px;
+  }
+}
+
+.footer {
+  text-align: right;
+}

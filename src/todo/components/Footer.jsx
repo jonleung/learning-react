@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 function Footer(props) {
   return (
-    <div>{props.numDoneTodos} / {props.numTotalTodos}</div>
+    <div className="footer">{props.numDoneTodos} / {props.numTotalTodos}</div>
   );
 }
 

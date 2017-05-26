@@ -66,22 +66,24 @@ class TodoApp extends React.Component {
 
   render() {
     return (
-      <div>
-        <ControlBar
-          onTodoAdded={this.handleBlankTodoAdded}
-          filterView={this.state.filterView}
-          onFilterViewChange={this.handleFilterViewChange}
-        />
-        <TodoList
-          todos={this.state.todos}
-          filterView={this.state.filterView}
-          onTodoTitleChange={this.handleTodoTitleChange}
-          onTodoIsDoneChange={this.handleTodoIsDoneChange}
-        />
-        <Footer
-          numDoneTodos={this.calcNumDoneTodos()}
-          numTotalTodos={this.calcNumTotalTodos()}
-        />
+      <div className="container">
+        <div>
+          <ControlBar
+            onTodoAdded={this.handleBlankTodoAdded}
+            filterView={this.state.filterView}
+            onFilterViewChange={this.handleFilterViewChange}
+          />
+          <TodoList
+            todos={this.state.todos}
+            filterView={this.state.filterView}
+            onTodoTitleChange={this.handleTodoTitleChange}
+            onTodoIsDoneChange={this.handleTodoIsDoneChange}
+          />
+          <Footer
+            numDoneTodos={this.calcNumDoneTodos()}
+            numTotalTodos={this.calcNumTotalTodos()}
+          />
+        </div>
       </div>
     );
   }

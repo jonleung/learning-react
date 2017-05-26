@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+
 import TodoApp from './components/TodoApp';
+import './styles/index.scss';
 
 const uuidV4 = require('uuid/v4');
 
@@ -40,6 +42,8 @@ const STORE = {
 };
 
 ReactDOM.render(
-  <TodoApp store={STORE} />,
+  <div className="container">
+    <TodoApp store={STORE} />
+  </div>,
   document.getElementById('root'),
 );
