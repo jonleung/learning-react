@@ -10,7 +10,7 @@ if (module.hot) {
 
 ReactDOM.render(
   <div className="container">
-    <App />
+    <App store={MOCKED_STORE}/>
   </div>,
   document.getElementById('root'),
 );

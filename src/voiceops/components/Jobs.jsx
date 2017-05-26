@@ -9,12 +9,21 @@ class Jobs extends React.Component {
   }
 
   render() {
+    const jobs = this.props.jobs.map((job) => {
+      return (
+        <Job
+          key={job.id}
+          title={job.title}
+          description={job.description}
+          timestamp={job.timestamp.toString()}
+        />
+      );
+    });
+
     return (
       <div>
         <h2>Job Listings</h2>
-        <Job />
-        <Job />
-        <Job />        
+        {jobs}
       </div>
     );
   }

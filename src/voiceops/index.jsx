@@ -4,13 +4,15 @@ import ReactDOM from 'react-dom';
 import App from './components/App';
 import './styles/index.scss';
 
+import MOCKED_STORE from './helpers/constants';
+
 if (module.hot) {
   module.hot.accept();
 }
 
 ReactDOM.render(
   <div className="container">
-    <App />
+    <App store={MOCKED_STORE} />
   </div>,
   document.getElementById('root'),
 );

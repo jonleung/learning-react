@@ -15,7 +15,7 @@ class App extends React.Component {
       <div>
         <h1>Jobs Board</h1>
         <JobForm />
-        <Jobs />
+        <Jobs jobs={this.props.store.jobs} />
       </div>
     );
   }

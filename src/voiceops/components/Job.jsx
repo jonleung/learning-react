@@ -9,7 +9,10 @@ class Job extends React.Component {
   render() {
     return (
       <div>
-        <h2>Job X</h2>
+        <h3>Title</h3>
+        <h3>{this.props.title}</h3>
+        <p>{this.props.timestamp}</p>
+        <p>{this.props.description}</p>
       </div>
     );
   }
