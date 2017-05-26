@@ -11,6 +11,7 @@ const config = {
   entry: {
     tictactoe: './tictactoe/app.js',
     todo: './todo/index.jsx',
+    chat: './chat/index.jsx',
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
