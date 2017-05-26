@@ -5,16 +5,16 @@ import { filter } from 'lodash/collection';
 import ControlBar from './ControlBar';
 import TodoList from './TodoList';
 import Footer from './Footer';
+import LocalStore from '../helpers/local_store';
 
 const uuidV4 = require('uuid/v4');
 
 class TodoApp extends React.Component {
+
   constructor(props) {
     super(props);
-    this.state = {
-      filterView: 'all',
-      todos: props.store.todos.slice(),
-    };
+    this.state = Object.assign({}, LocalStore.getState());
+
     this.handleTodoTitleChange = this.handleTodoTitleChange.bind(this);
     this.handleTodoIsDoneChange = this.handleTodoIsDoneChange.bind(this);
     this.handleBlankTodoAdded = this.handleBlankTodoAdded.bind(this);
@@ -27,6 +27,7 @@ class TodoApp extends React.Component {
     this.setState({
       todos,
     });
+    LocalStore.setState(this.state);
   }
 
   handleTodoIsDoneChange(index, isDone) {
@@ -35,6 +36,7 @@ class TodoApp extends React.Component {
     this.setState({
       todos,
     });
+    LocalStore.setState(this.state);
   }
 
   handleBlankTodoAdded() {
@@ -48,12 +50,14 @@ class TodoApp extends React.Component {
     this.setState({
       todos,
     });
+    LocalStore.setState(this.state);
   }
 
   handleFilterViewChange(filterView) {
     this.setState({
       filterView,
     });
+    LocalStore.setState(this.state);
   }
 
   calcNumDoneTodos() {
