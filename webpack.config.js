@@ -12,6 +12,7 @@ const config = {
     tictactoe: './tictactoe/app.js',
     todo: './todo/index.jsx',
     chat: './chat/index.jsx',
+    voiceops: './voiceops/index.jsx',
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
